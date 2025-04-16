@@ -23,6 +23,7 @@ public class CalculadoraPanel extends JDialog {
 	private JTextField textField_2;
 	
 	private boolean primeiroCampoSelecionado = true;
+	private int valorAtual = 0;
 
 	/**
 	 * Launch the application.
@@ -293,8 +294,8 @@ public class CalculadoraPanel extends JDialog {
 				int valorText1 = Integer.parseInt(textField.getText());
 				int valorText2 = Integer.parseInt(textField_1.getText());
 				int divisao = valorText1 / valorText2;
-				String resultado = String.valueOf(divisao);
-				textField_2.setText(resultado);
+				valorAtual = valorAtual + divisao;
+				
 				
 				
 			}
@@ -308,8 +309,7 @@ public class CalculadoraPanel extends JDialog {
 				int valorText1 = Integer.parseInt(textField.getText());
 				int valorText2 = Integer.parseInt(textField_1.getText());
 				int multiplica = valorText1 * valorText2;
-				String resultado = String.valueOf(multiplica);
-				textField_2.setText(resultado);
+				valorAtual = valorAtual + multiplica;
 			
 			}
 		});
@@ -322,8 +322,7 @@ public class CalculadoraPanel extends JDialog {
 				int valorText1 = Integer.parseInt(textField.getText());
 				int valorText2 = Integer.parseInt(textField_1.getText());
 				int soma = valorText1 + valorText2;
-				String resultado = String.valueOf(soma);
-				textField_2.setText(resultado);
+				valorAtual = valorAtual + soma;
 			}
 		});
 		btnNewButton_11.setBounds(225, 351, 55, 38);
@@ -335,8 +334,8 @@ public class CalculadoraPanel extends JDialog {
 				int valorText1 = Integer.parseInt(textField.getText());
 				int valorText2 = Integer.parseInt(textField_1.getText());
 				int subtrair = valorText1 - valorText2;
-				String resultado = String.valueOf(subtrair);
-				textField_2.setText(resultado);
+				valorAtual = valorAtual + subtrair;
+				
 			}
 		});
 		btnNewButton_12.setBounds(225, 400, 55, 38);
@@ -345,6 +344,8 @@ public class CalculadoraPanel extends JDialog {
 		JButton btnNewButton_13 = new JButton("=");
 		btnNewButton_13.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String resultado = String.valueOf(valorAtual);
+				textField_2.setText(resultado);
 			}
 		});
 		btnNewButton_13.setBounds(160, 400, 55, 38);
