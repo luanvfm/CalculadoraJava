@@ -21,6 +21,7 @@ public class CalculadoraPanel extends JDialog {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private static CalculadoraPanel tela;
 	
 	private boolean primeiroCampoSelecionado = true;
 	private int valorAtual = 0;
@@ -30,9 +31,9 @@ public class CalculadoraPanel extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			CalculadoraPanel dialog = new CalculadoraPanel();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
+			tela = new CalculadoraPanel();
+			tela.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			tela.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -290,12 +291,18 @@ public class CalculadoraPanel extends JDialog {
 		JButton btnNewButton_9 = new JButton("/");
 		btnNewButton_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if ((textField.getText().isEmpty() || textField_1.getText().isEmpty()) == false) {
+					
+					int valorText1 = Integer.parseInt(textField.getText());
+					int valorText2 = Integer.parseInt(textField_1.getText());
+					int divisao = valorText1 / valorText2;
+					valorAtual = valorAtual + divisao;
 				
-				int valorText1 = Integer.parseInt(textField.getText());
-				int valorText2 = Integer.parseInt(textField_1.getText());
-				int divisao = valorText1 / valorText2;
-				valorAtual = valorAtual + divisao;
-				
+				} else {
+					System.out.println("Não é permitido calcular com espaços vazios");
+				}
+				/* String resultado = String.valueOf(divisao);
+				textField_2.setText(resultado); */
 				
 				
 			}
@@ -306,11 +313,14 @@ public class CalculadoraPanel extends JDialog {
 		JButton btnNewButton_10 = new JButton("*");
 		btnNewButton_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int valorText1 = Integer.parseInt(textField.getText());
-				int valorText2 = Integer.parseInt(textField_1.getText());
-				int multiplica = valorText1 * valorText2;
-				valorAtual = valorAtual + multiplica;
-			
+				if ((textField.getText().isEmpty() || textField_1.getText().isEmpty()) == false) {
+					int valorText1 = Integer.parseInt(textField.getText());
+					int valorText2 = Integer.parseInt(textField_1.getText());
+					int multiplica = valorText1 * valorText2;
+					valorAtual = valorAtual + multiplica;
+				} else {
+					System.out.println("Não é permitido calcular com espaços vazios");
+				}
 			}
 		});
 		btnNewButton_10.setBounds(225, 302, 55, 38);
@@ -319,10 +329,15 @@ public class CalculadoraPanel extends JDialog {
 		JButton btnNewButton_11 = new JButton("+");
 		btnNewButton_11.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int valorText1 = Integer.parseInt(textField.getText());
-				int valorText2 = Integer.parseInt(textField_1.getText());
-				int soma = valorText1 + valorText2;
-				valorAtual = valorAtual + soma;
+				if ((textField.getText().isEmpty() || textField_1.getText().isEmpty()) == false) {
+					int valorText1 = Integer.parseInt(textField.getText());
+					int valorText2 = Integer.parseInt(textField_1.getText());
+					int soma = valorText1 + valorText2;
+					valorAtual = valorAtual + soma;
+				} else {
+					System.out.println("Não é permitido calcular com espaços vazios");
+				}
+				
 			}
 		});
 		btnNewButton_11.setBounds(225, 351, 55, 38);
@@ -331,10 +346,14 @@ public class CalculadoraPanel extends JDialog {
 		JButton btnNewButton_12 = new JButton("-");
 		btnNewButton_12.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int valorText1 = Integer.parseInt(textField.getText());
-				int valorText2 = Integer.parseInt(textField_1.getText());
-				int subtrair = valorText1 - valorText2;
-				valorAtual = valorAtual + subtrair;
+				if ((textField.getText().isEmpty() || textField_1.getText().isEmpty()) == false) {
+					int valorText1 = Integer.parseInt(textField.getText());
+					int valorText2 = Integer.parseInt(textField_1.getText());
+					int subtrair = valorText1 - valorText2;
+					valorAtual = valorAtual + subtrair;
+				} else {
+					System.out.println("Não é permitido calcular com espaços vazios");
+				}
 				
 			}
 		});
@@ -346,6 +365,7 @@ public class CalculadoraPanel extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				String resultado = String.valueOf(valorAtual);
 				textField_2.setText(resultado);
+				
 			}
 		});
 		btnNewButton_13.setBounds(160, 400, 55, 38);
@@ -371,18 +391,42 @@ public class CalculadoraPanel extends JDialog {
 		});
 		btnNewButton_8_1.setBounds(91, 400, 55, 38);
 		contentPanel.add(btnNewButton_8_1);
+		
+		JButton btnNewButton_13_1 = new JButton("CC");
+		btnNewButton_13_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				valorAtual = 0;
+				textField.setText("");
+				textField_1.setText("");
+				textField_2.setText("");
+			}
+		});
+		btnNewButton_13_1.setBounds(26, 400, 55, 38);
+		contentPanel.add(btnNewButton_13_1);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						valorAtual = 0;
+						tela.dispose();
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						valorAtual = 0;
+						tela.dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
