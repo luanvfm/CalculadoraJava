@@ -15,6 +15,18 @@ Este projeto é uma calculadora simples com interface gráfica construída utili
 - Botão "=" para exibir o resultado
 - Botão "CC" para limpar todos os campos
 
+## Demonstração
+
+### 📷 Imagens da Interface
+
+![Print da Calculadora Swing](./assets/calculadora.png)
+
+### 🎥 Vídeo Demonstrativo
+
+![Calculadora Showcase](./assets/calculadorashowcase.gif)
+
+> Substitua o link acima pelo link real do seu vídeo (ex: YouTube ou Google Drive com acesso público).
+
 ## Tecnologias Utilizadas
 
 - Java
