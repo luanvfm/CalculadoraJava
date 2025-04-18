@@ -20,8 +20,6 @@ Este projeto é uma calculadora simples com interface gráfica construída utili
 ### 📷 Imagens da Interface
 
 <p align="center">
-  <img src="./assets/calculadora.png" alt="Print da Calculadora" width="350"/>
-  &nbsp;&nbsp;&nbsp;
   <img src="./assets/calculadorashowcase.gif" alt="GIF da Calculadora" width="350"/>
 </p>
 
