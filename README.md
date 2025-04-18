@@ -17,7 +17,7 @@ Este projeto é uma calculadora simples com interface gráfica construída utili
 
 ## Demonstração
 
-### 📷 Imagens da Interface
+### 📷 Interface
 
 <p align="center">
   <img src="./assets/calculadorashowcase.gif" alt="GIF da Calculadora" width="350"/>
@@ -50,4 +50,4 @@ A classe principal é `CalculadoraPanel.java`, que herda de `JDialog` e contém 
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/nome-do-repositorio.git
+   git clone https://github.com/luanvfm/CalculadoraJava.git
